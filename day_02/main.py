@@ -1,12 +1,9 @@
 def parse_raw():
     with open('input.txt') as f:
         data = f.read().splitlines()
-
     return data
 
-
 data = parse_raw()
-
 
 def calculate_score(match, part):
     possible_matches = {
@@ -21,21 +18,16 @@ def calculate_score(match, part):
         'C Z': [6, 7]
     }
 
-    if part == 1:
-        return possible_matches[match][0]
-    if part == 2:
-        return possible_matches[match][1]
-
+    if part == 1: return possible_matches[match][0]
+    if part == 2: return possible_matches[match][1]
 
 def part_one():
     match_scores = [calculate_score(match, part=1) for match in data]
     print(sum(match_scores))
 
-
 def part_two():
     match_scores = [calculate_score(match, part=2) for match in data]
     print(sum(match_scores))
-
 
 part_one()
 part_two()
