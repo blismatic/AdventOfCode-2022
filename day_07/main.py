@@ -39,14 +39,10 @@ def part_one():
 def part_two():
     used_space = data[tuple('/')]
     available_space = 70_000_000 - used_space
-
     needed_space = 30_000_000 - available_space
 
-    sizes = sorted(data.values())
-    for size in sizes:
-        if size >= needed_space:
-            print(size)
-            return
+    sizes = data.values()
+    print(min([dir_size for dir_size in sizes if dir_size >= needed_space]))
 
 
 part_one()
