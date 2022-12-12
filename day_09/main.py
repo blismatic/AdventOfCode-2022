@@ -1,5 +1,5 @@
 def parse_raw():
-    with open('test.txt') as f:
+    with open('input.txt') as f:
         data = f.read().strip().split('\n')
     return data
 
@@ -66,7 +66,7 @@ class Knot:
         # ---------------------
         # Diagonal directions |
         # ---------------------
-        elif ((other.y == self.y + 2) and (other.x == self.x + 1)) or ((other.x == self.x + 2) and (other.y == self.y + 1)):
+        elif ((other.y == self.y + 2) and (other.x == self.x + 1)) or ((other.x == self.x + 2) and (other.y == self.y + 1)) or ((other.x == self.x + 2) and (other.y == self.y + 2)):
             '''
             ......    ......
             ..O...    ..O...
@@ -76,7 +76,7 @@ class Knot:
             '''
             self.x += 1
             self.y += 1
-        elif ((other.y == self.y + 2) and (other.x == self.x - 1)) or ((other.x == self.x - 2) and (other.y == self.y + 1)):
+        elif ((other.y == self.y + 2) and (other.x == self.x - 1)) or ((other.x == self.x - 2) and (other.y == self.y + 1)) or ((other.x == self.x - 2) and (other.y == self.y + 2)):
             '''
             ......    ......
             ..O...    ..O...
@@ -86,7 +86,7 @@ class Knot:
             '''
             self.x -= 1
             self.y += 1
-        elif ((other.y == self.y - 2) and (other.x == self.x + 1)) or ((other.x == self.x + 2) and (other.y == self.y - 1)):
+        elif ((other.y == self.y - 2) and (other.x == self.x + 1)) or ((other.x == self.x + 2) and (other.y == self.y - 1)) or ((other.x == self.x + 2) and (other.y == self.y - 2)):
             '''
             ......    ......
             ..S...    ......
@@ -96,7 +96,7 @@ class Knot:
             '''
             self.x += 1
             self.y -= 1
-        elif ((other.y == self.y - 2) and (other.x == self.x - 1)) or ((other.x == self.x - 2) and (other.y == self.y - 1)):
+        elif ((other.y == self.y - 2) and (other.x == self.x - 1)) or ((other.x == self.x - 2) and (other.y == self.y - 1)) or ((other.x == self.x - 2) and (other.y == self.y - 2)):
             '''
             ......    ......
             ...S..    ......
@@ -150,10 +150,6 @@ def part_two():
                 knots[idx].follow(knots[idx - 1])
             # knots[9] is the Tail of the rope
             visited_positions.add((knots[9].x, knots[9].y))
-
-        print(f'== {direction} {amount} ==')
-        print(knots)
-        print()
 
     print(len(visited_positions))
 
